@@ -9,22 +9,22 @@ import time
 
 
 #sitebar radio
-test = st.sidebar.radio("Navigation", ['Home', 'Column', 'Tabs', 'Expander & Container'])
+test = st.sidebar.radio("Navigation", ['Home', 'Column', 'Tabs', 'Expander & Container', 'Status Element'])
 
-#Select BoX
-st.sidebar.selectbox("NavigationSB", ['NLP', 'DS', 'ML', 'Flask'])
+# #Select BoX
+# st.sidebar.selectbox("NavigationSB", ['NLP', 'DS', 'ML', 'Flask'])
 
-#Multi Select
-st.sidebar.multiselect("NavigationMS", ['NLP', 'ML', 'DS', 'DL'])
+# #Multi Select
+# st.sidebar.multiselect("NavigationMS", ['NLP', 'ML', 'DS', 'DL'])
 
-#Sidebar INput Number
-st.sidebar.number_input("Pilih Nomor: ", 1,10 )
+# #Sidebar INput Number
+# st.sidebar.number_input("Pilih Nomor: ", 1,10 )
 
-#Sidebar Radio Number
-st.sidebar.radio(label="Navigation", options=[1,20,30])
+# #Sidebar Radio Number
+# st.sidebar.radio(label="Navigation", options=[1,20,30])
 
-#Sidebar FIle UPloder
-st.sidebar.file_uploader("Upload File : ", type=['csv', 'pdf', 'img'])
+# #Sidebar FIle UPloder
+# st.sidebar.file_uploader("Upload File : ", type=['csv', 'pdf', 'img'])
 
 
 if test == "Home":
@@ -50,7 +50,6 @@ if test == "Column":
 
         col2.subheader("Menampilkan data berupa tabel")
         col2.write(data)
-
 
 if test == "Tabs":
         st.subheader("Hai, Kelas Awan Pintar")
@@ -82,11 +81,13 @@ if test == "Tabs":
         tabs2.subheader("Menampilkan data dengan Table")
         tabs2.write(data)
 
-
 if test == "Expander & Container":
         st.subheader("Hai, Kelas Awan Pintar")
         st.write("Kita akan belajar mengenai fungsi Expander & Container")
-
+        progress = st.progress(0)
+        for i in range(100):
+                time.sleep(0.1)
+                progress.progress(i+1)
         #halaman expander & container
 
         #pengambilan data
@@ -109,3 +110,23 @@ if test == "Expander & Container":
                 st.bar_chart(data)
 
         st.write("Ini Bukan didalam container")
+
+if test == "Status Element":
+        st.subheader("Hai, Kelas Awan Pintar")
+        st.write("Kita akan belajar mengenai fungsi Status Element")
+
+        #Contoh Fungsi Progress
+        progress = st.progress(0)
+        for i in range(100):
+                time.sleep(0.1)
+                progress.progress(i+1)
+                
+        #Contoh Fungsi Baloon
+        st.balloons()
+
+        #Contoh Fungsi Error, Success, Info, Exception, Warning
+        st.error("Ini Fungsi Error")
+        st.success("ini Fungsi Success")
+        st.info("Ini Fungsi Info")
+        st.exception(RuntimeError("Ini Adalah Error"))
+        st.warning("Ini Fungsi Warning")
